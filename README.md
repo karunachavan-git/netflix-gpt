@@ -1,7 +1,8 @@
 # Netflix GPT 
     - Create react app
     - configured tellwindcss
-    - 
+    -  Header
+    -  Login Form
 
 
 #Features
