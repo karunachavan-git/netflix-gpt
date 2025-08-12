@@ -1,8 +1,10 @@
 # Netflix GPT 
     - Create react app
     - configured tellwindcss
+    - Routing
     -  Header
     -  Login Form
+    -  Form validation ( useRef hook)
 
 
 #Features
