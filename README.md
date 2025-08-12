@@ -6,7 +6,14 @@
     -  Header
     -  Login Form
     -  Form validation ( useRef hook)
+    - Firebase Setup (deployed App to production)
+    - create Signup User Account
+    - Validate User Sign In Api
+    - Update User details in Redux Store
+    - Updated user profile details
+    - Implimented Sign Out feature
 
+npm i
 #Features
 
 - Home Page - Sign In / Sign up Form - Redirect to Browse PAge - Browse ( Post login/ authenticated user) - Header - Main Movie
