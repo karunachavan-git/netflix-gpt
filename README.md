@@ -12,6 +12,17 @@
     - Update User details in Redux Store
     - Updated user profile details
     - Implimented Sign Out feature
+    - Bug fix to prevent redirect from manual browsing url change
+    - Make sure to un subscribe to onAuthStateChanged on un mount componenet
+    - Register TMDB API & created app and get access token
+    - Get Data from TMDB Now Playing Movies List API
+    - Custom Hook for Now Playing Movies
+    - Created movie slice
+    - Updated store with movie Data
+    - Fetch Data fro Trailer Vide
+    - Updated store with Trailer Data
+    - Embedded the Youtube video and make it autoplay and mute
+    - Tailwindcss classes update
 
 
 #Features
