@@ -5,11 +5,19 @@ import { useSelector } from "react-redux";
 import { useEffect } from "react";
 import { onAuthStateChanged } from "firebase/auth";
 import { addUser, removeUser } from "../utils/userSlice";
+import { toggleSearch } from "../utils/gptSlice";
 import { useDispatch } from "react-redux";
+import { SUPPORTED_LANGUAGES } from "../utils/constants"
+import { changeLanguage } from "../utils/configSlice";
 const Header = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const user = useSelector((store) => store.user);
+    const isGPTSearchVisible = useSelector((store) => store.gpt.isSearchVisible);
+    const handleToggleSearch = () => {
+        dispatch(toggleSearch());
+    };
+
     const handleSignout = () => {
         signOut(auth).then(() => {
             // navigate("/");
@@ -19,6 +27,11 @@ const Header = () => {
         });
     }
 
+    const handleLanguageChange = (e) => {
+        const selectedLanguage = e.target.value;
+        dispatch(changeLanguage(selectedLanguage));
+    };
+
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (user) => {
             if (user) {
@@ -26,12 +39,10 @@ const Header = () => {
                 const { uid, email, displayName } = user;
                 dispatch(addUser({ uid: uid, email: email, displayName: displayName }));
                 navigate("/browse");
-                console.log("User is signed in:", user);
             } else {
                 // User is signed out, clear user from Redux store
                 dispatch(removeUser());
                 navigate("/");
-                console.log("No user is signed in");
             }
         })
         return () => unsubscribe();
@@ -45,6 +56,18 @@ const Header = () => {
                 alt="logo"
             />
             {user && <div>
+
+                {isGPTSearchVisible && <select className="m-2 p-2 " onChange={(e) => {
+                    handleLanguageChange(e)
+                }}>
+                    {SUPPORTED_LANGUAGES.map((lang) => (
+                        <option key={lang.identifier} value={lang.identifier}>
+                            {lang.name}
+                        </option>
+                    ))}
+                </select>
+                }
+                <button className="p-2 bg-white m-4 rounded-lg" onClick={handleToggleSearch}>{!isGPTSearchVisible ? "GPT Search" : "Home"}</button>
                 <button
                     className="text-white border-2 p-2 rounded-lg cursor-pointer"
                     onClick={handleSignout}
@@ -52,7 +75,7 @@ const Header = () => {
                     Sign Out
                 </button>
             </div>}
-        </div>
+        </div >
     );
 };
 export default Header;

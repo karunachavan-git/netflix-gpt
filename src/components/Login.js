@@ -46,7 +46,6 @@ const Login = () => {
                     const errorCode = error.code;
                     const errorMessage = error.message;
                     setErrorMsg(errorMessage);
-                    console.error("Error creating user:", errorCode, errorMessage);
                 });
         }
         else {
@@ -54,14 +53,11 @@ const Login = () => {
                 .then((userCredential) => {
                     // Signed in 
                     const user = userCredential.user;
-                    console.log("User signed in:", user);
-
                 })
                 .catch((error) => {
                     const errorCode = error.code;
                     const errorMessage = error.message;
                     setErrorMsg(errorMessage);
-                    console.error("Error signing in:", errorCode, errorMessage);
                 });
         }
     };

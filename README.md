@@ -25,6 +25,9 @@
 - Developed Movie Category List component
 - Fetched movies from multiple categories using custom hooks
 - Implemented UI/UX enhancements for better user experience
+- GPT Search Page
+- GPT Search Bar
+- BONUS : Multi-language
 
 #Features
 

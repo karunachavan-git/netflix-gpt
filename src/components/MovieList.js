@@ -1,7 +1,6 @@
 import MovieCard from "./MovieCard";
 
 const MovieList = ({ title, movies }) => {
-    console.log("MovieList component rendered" + movies);
     return (
         <div className="bg-black text-white ">
 

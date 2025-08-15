@@ -5,10 +5,12 @@ import useTopRatesMovies from "../hooks/useTopRatesMovies";
 import useUpcomingMovies from "../hooks/useUpcomingMovies";
 import MainBrowseContainer from "./MainBrowseContainer";
 import SecondaryBrowseContainer from "./SecondaryBrowseContainer";
-import { use } from "react";
+import GPTSearch from "./GPTSearch";
+import { useSelector } from "react-redux";
+
 
 const Browse = () => {
-
+    const isSearchVisible = useSelector((store) => store.gpt.isSearchVisible);
     useNowPlayingMovies();
     usePopularMovies();
     useTopRatesMovies();
@@ -23,8 +25,13 @@ const Browse = () => {
             - VideoList (categories)
             -horizontal scroll video/cards list
             */}
-            <MainBrowseContainer />
-            <SecondaryBrowseContainer />
+            {isSearchVisible ? (<GPTSearch />) :
+                (<>
+                    <MainBrowseContainer />
+                    <SecondaryBrowseContainer />
+                </>)}
+
+
         </div>
     )
 }
